@@ -1,16 +1,15 @@
 class Solution {
 public:
     int firstUniqChar(string s) {
-        int count[26] = {0};
-        for(int i = 0; i < s.size(); i++){
-            int alpha = s[i] - 'a';
-            count[alpha]++;
-        }
-        for(int j = 0; j < s.size(); j++){
-            int alph = s[j] - 'a';
-            if(count[alph] == 1){
-                return j;
+        for(int i = 0; i < s.length(); i++){
+            bool mark = true;
+            for(int j = 0; j < s.length(); j++){
+                if(i != j && s[i] == s[j]){
+                    mark = false;
+                    break;
+                }
             }
+            if(mark == true) return i;
         }
         return -1;
     }
